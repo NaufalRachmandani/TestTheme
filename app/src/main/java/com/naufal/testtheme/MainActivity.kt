@@ -23,7 +23,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.naufal.testtheme.ui.theme.CustomTheme
+import com.naufal.testtheme.ui.theme.ExtendedTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,13 +51,12 @@ fun HomeScreen(
 ) {
     Log.e("HomeScreen1234", "HomeScreen: ${themeState.isDarkMode}")
 
-    CustomTheme {
+    ExtendedTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
-            color = CustomTheme.colors.bg
+            color = ExtendedTheme.colors.surface
         ) {
-            val colorPrimary = CustomTheme.colors.primary
-            val colorSecondary = CustomTheme.colors.secondary
+            val colorPrimary = ExtendedTheme.colors.primary
 
             Column(
                 modifier = Modifier.fillMaxSize(),
@@ -73,16 +72,6 @@ fun HomeScreen(
                         }
                 )
 
-                Spacer(modifier = Modifier.height(30.dp))
-
-                Box(
-                    modifier = Modifier
-                        .size(100.dp)
-                        .drawBehind {
-                            drawCircle(color = colorSecondary)
-                        }
-                )
-
                 Spacer(modifier = Modifier.height(100.dp))
 
                 Button(onClick = { onToggleTheme() }) {
@@ -92,7 +81,7 @@ fun HomeScreen(
                         } else {
                             "Hidupkan dark mode"
                         },
-                        color = CustomTheme.colors.primary
+                        color = colorPrimary
                     )
                 }
             }
